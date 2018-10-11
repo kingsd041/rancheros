@@ -56,7 +56,6 @@ fi
 
 tar -c -f /tmp/rancheros_export_$ARCHIVE -C $dest_dir  . >/dev/null 2>&1
 
-/bin/echo -e "\n"
 /bin/echo -e "The RancherOS config and log are successfully exported. \
 \nPlease check the /tmp/rancheros_export_$ARCHIVE."
 

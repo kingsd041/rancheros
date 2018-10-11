@@ -21,7 +21,7 @@ ARCHIVE=$DATE.tar
 for i in $dest_conf_dir $dest_log_dir;
 do
   if [ ! -d $i ]; then
-    mkdir -p $i
+    sudo mkdir -p -m 777 $i
   fi
 done
 
@@ -36,10 +36,12 @@ sudo cp -arf $boot_log_src_dir $dest_log_dir
 # Export rancheros config
 sudo ros c export -o $dest_conf_dir/ros-config-export.conf
 sudo ros -v > $dest_conf_dir/ros-version
+sudo uname -r > $dest_conf_dir/kernel-version
 sudo system-docker info > $dest_conf_dir/system-docker-info
 sudo docker info > $dest_conf_dir/docker-info
 sudo cat /proc/mounts > $dest_conf_dir/proc-mounts
 sudo cat /proc/1/mounts > $dest_conf_dir/proc-1-mounts
+sudo cat /proc/cmdline > $dest_conf_dir/cmdline
 sudo dmesg > $dest_conf_dir/dmesg.log
 #sudo ls $conf_file_src_dir | \
 #        grep -v "pem" | \

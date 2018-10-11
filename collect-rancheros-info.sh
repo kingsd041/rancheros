@@ -44,7 +44,7 @@ sudo dmesg > $dest_conf_dir/dmesg.log
 #sudo ls $conf_file_src_dir | \
 #        grep -v "pem" | \
 #        xargs -i sudo cp -r $conf_file_src_dir/{} $dest_conf_dir
-cd $conf_file_src_dir && sudo cp -rf `sudo ls  | grep -E -v "^(pem)$"` /tmp
+cd $conf_file_src_dir && sudo cp -rf `sudo ls  | grep -E -v "^(pem)$"` $dest_conf_dir
 sudo cp -arf $os_config_dir $dest_conf_dir
 
 hiddenSshRsa $dest_conf_dir/ros-config-export.conf

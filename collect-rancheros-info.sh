@@ -51,7 +51,7 @@ if [ -f  $dest_conf_dir/metadata ]; then
     hiddenSshRsa $dest_conf_dir/metadata
 fi
 
-tar -c -f /tmp/rancheros_export_$ARCHIVE -C $dest_dir  . >/dev/null 2>&1
+sudo tar -c -f /tmp/rancheros_export_$ARCHIVE -C $dest_dir  . >/dev/null 2>&1
 
 echo -e "\n"
 echo -e "The RancherOS config and log are successfully exported. \

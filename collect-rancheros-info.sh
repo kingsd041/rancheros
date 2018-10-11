@@ -42,8 +42,8 @@ sudo cat /proc/mounts > $dest_conf_dir/proc-mounts
 sudo cat /proc/1/mounts > $dest_conf_dir/proc-1-mounts
 sudo dmesg > $dest_conf_dir/dmesg.log
 #sudo ls $conf_file_src_dir | \
-        grep -v "pem" | \
-        xargs -i sudo cp -r $conf_file_src_dir/{} $dest_conf_dir
+#        grep -v "pem" | \
+#        xargs -i sudo cp -r $conf_file_src_dir/{} $dest_conf_dir
 cd $conf_file_src_dir && sudo cp -rf `sudo ls  | grep -E -v "^(pem)$"` /tmp
 sudo cp -arf $os_config_dir $dest_conf_dir
 

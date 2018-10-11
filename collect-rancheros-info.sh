@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+set -e
+# This script will export the configuration and log files of rancheros
 
 # Boot log directory
 boot_log_src_dir=/var/log/boot
@@ -25,8 +27,9 @@ do
   fi
 done
 
+
 # Hidden ssh-rsa
-hiddenSsh-rsa(){
+hiddenSshRsa(){
      sudo sed -i 's/ssh-rsa.*$/ssh-rsa .../g' $1
 }
 
@@ -43,14 +46,12 @@ sudo dmesg >> $dest_conf_dir/dmesg.log
 sudo ls $conf_file_src_dir | grep -v "pem" | xargs -i sudo cp -r $conf_file_src_dir/{} $dest_conf_dir
 sudo cp -arf $os_config_dir $dest_conf_dir
 
-hiddenSsh-rsa $dest_conf_dir/ros-config-export.conf
+hiddenSshRsa $dest_conf_dir/ros-config-export.conf
 if [ -f  $dest_conf_dir/metadata ]; then
-    hiddenSsh-rsa $dest_conf_dir/metadata
+    hiddenSshRsa $dest_conf_dir/metadata
 fi
 
 tar -c -f /tmp/rancheros_export_$ARCHIVE -C $dest_dir  . >/dev/null 2>&1
 
 echo -e "The RancherOS config and log are successfully exported. \
 \nPlease check the /tmp/rancheros_export_$ARCHIVE directory"
-# sudo rm -rf $dest_dir
-

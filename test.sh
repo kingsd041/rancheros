@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# How to use
+# How to use:
 #
 # 1. Login to your rancheros and switch to root
 #    $ sudo su - root
@@ -9,7 +9,7 @@
 
 set -e
 # /var/log directory
-boot_log_src_dir=/var/log
+log_src_dir=/var/log
 # Rancher config file directory
 conf_file_src_dir=/var/lib/rancher/conf
 # Os-config directory
@@ -36,7 +36,7 @@ hiddenSshRsa(){
 }
 
 # Export /var/log
-cp -arf $boot_log_src_dir $dest_log_dir
+cp -arf $log_src_dir $dest_log_dir
 # Export rancheros config
 ros c export -o $dest_conf_dir/ros-config-export.conf
 ros -v > $dest_conf_dir/ros-version
@@ -62,4 +62,3 @@ echo "*********************************************************"
 echo "The RancherOS config and log are successfully exported."
 echo "Please check the /tmp/rancheros_export_$ARCHIVE."
 echo "*********************************************************"
-
